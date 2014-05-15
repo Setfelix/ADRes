@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pfcrt codons by Setfelix</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Setfelix/pfcrt_codons">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Setfelix/pfcrt_codons/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Setfelix/pfcrt_codons/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Pfcrt codons</h1>
+          <p>Contains a script to output a csv file of sample name, codons (72-76) and corresponding amino acids from fasta alignment of reference pfcrt gene sequence and individual sample sequences of same gene.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Setfelix">Setfelix</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="pfcrt_codons" class="anchor" href="#pfcrt_codons"><span class="octicon octicon-link"></span></a>pfcrt_codons</h1>
+
+<p>pfcrt_codons2csv.py is a python script to output a csv file of sample name, codons (72-76) and corresponding amino acids from a fasta alignment of reference pfcrt gene sequence and individual sample sequences of same gene.</p>
+
+<p>If no command line arguments are given, the following information is displayed:</p>
+
+<p>This script takes a DNA fasta alignment file as input and outputs a csv file of sample_id, codon(s), and amino acid.
+Contact: Setor Amuzu, <a href="mailto:felixsetor@yahoo.com">felixsetor@yahoo.com</a>
+Usage: python pfcrt_codons2csv.py inputfile.fas</p>
+
+<p>Where inputfile is a fasta alignment of reference pfcrt gene sequence and individual sample sequences of same gene.</p>
+
+<p>Example:</p>
+
+<hr><h2>
+<a name="inputfile-obtained-by-converting-bwa-bwasw-sam-alignment-file-to-fasta-format" class="anchor" href="#inputfile-obtained-by-converting-bwa-bwasw-sam-alignment-file-to-fasta-format"><span class="octicon octicon-link"></span></a>Inputfile (obtained by converting bwa bwasw SAM alignment file to fasta format)</h2>
+
+<blockquote>
+<p>Ref_pfcrt_gene
+AAAGAGATTAAGGATAATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATGAATAAAATTTTTGCT
+Sample_1
+AAAGAGA*TAAGGATAATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATTGAAACAATTTTTGCT
+Sample_2
+AAAGAGA*TAAGG**AATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATG***AAAATTTTTGCT</p>
+</blockquote>
+
+<hr><h2>
+<a name="outputfile_pfcrt_codons_72_76csv" class="anchor" href="#outputfile_pfcrt_codons_72_76csv"><span class="octicon octicon-link"></span></a>Outputfile_pfcrt_codons_72_76.csv</h2>
+
+<p>"Sample"    "Codon_72"  "Codon_72_aa"   "Codon_73"  "Codon_73_aa"   "Codon_74" "Codon_74_aa"    "Codon_75"  "Codon_75_aa"   "Codon_76"  "Codon_76_aa"
+"Ref_pfcrt_gene"    "TGT"   "C" "GTA"   "V" "ATT"   "I" "GAA"   "E" "ACA"   "T"
+"Sample_1"  "TGT"   "C" "GTA"   "V" "ATG"   "M/ START"  "***"   "-" "AAA"   "K"
+"Sample_2"  "TGT"   "C" "GTA"   "V" "ATG"   "M/ START"  "AAT"   "N" "AAA"   "K"</p>
+
+<hr><h2>
+<a name="command-line" class="anchor" href="#command-line"><span class="octicon octicon-link"></span></a>Command line</h2>
+
+<p>python pfcrt_codons2csv.py inputfile.fas</p>
+
+<p>Author:
+        Setor Amuzu (<a href="mailto:felixsetor@yahoo.com">felixsetor@yahoo.com</a>)</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
