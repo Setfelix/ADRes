@@ -57,21 +57,78 @@ Usage: python pfcrt_codons2csv.py inputfile.fas</p>
 <a name="inputfile-obtained-by-converting-bwa-bwasw-sam-alignment-file-to-fasta-format" class="anchor" href="#inputfile-obtained-by-converting-bwa-bwasw-sam-alignment-file-to-fasta-format"><span class="octicon octicon-link"></span></a>Inputfile (obtained by converting bwa bwasw SAM alignment file to fasta format)</h2>
 
 <blockquote>
-<p>Ref_pfcrt_gene
+<p>
+Ref_pfcrt_gene
 AAAGAGATTAAGGATAATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATGAATAAAATTTTTGCT
 Sample_1
 AAAGAGA*TAAGGATAATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATTGAAACAATTTTTGCT
 Sample_2
-AAAGAGA*TAAGG**AATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATG***AAAATTTTTGCT</p>
+AAAGAGA*TAAGG**AATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATG***AAAATTTTTGCT
+</p>
 </blockquote>
 
 <hr><h2>
 <a name="outputfile_pfcrt_codons_72_76csv" class="anchor" href="#outputfile_pfcrt_codons_72_76csv"><span class="octicon octicon-link"></span></a>Outputfile_pfcrt_codons_72_76.csv</h2>
 
-<p>"Sample"    "Codon_72"  "Codon_72_aa"   "Codon_73"  "Codon_73_aa"   "Codon_74" "Codon_74_aa"    "Codon_75"  "Codon_75_aa"   "Codon_76"  "Codon_76_aa"
-"Ref_pfcrt_gene"    "TGT"   "C" "GTA"   "V" "ATT"   "I" "GAA"   "E" "ACA"   "T"
-"Sample_1"  "TGT"   "C" "GTA"   "V" "ATG"   "M/ START"  "***"   "-" "AAA"   "K"
-"Sample_2"  "TGT"   "C" "GTA"   "V" "ATG"   "M/ START"  "AAT"   "N" "AAA"   "K"</p>
+<blockquote>
+  <p>
+  <table border="0" style="width:300px">
+    <tr>
+      <td>Sample</td>
+      <td>Codon_72</td>
+      <td>Codon_72_aa</td>
+      <td>Codon_73</td>
+      <td>Codon_73_aa</td>
+      <td>Codon_74</td>
+      <td>Codon_74_aa</td>
+      <td>Codon_75</td>
+      <td>Codon_75_aa</td>
+      <td>Codon_76</td>
+      <td>Codon_76_aa</td>
+    </tr>
+    <tr>
+      <td>Ref_pfcrt_gene</td>
+      <td>TGT</td>
+      <td>C</td>
+      <td>GTA</td>
+      <td>V</td>
+      <td>ATT</td>
+      <td>I</td>
+      <td>GAA</td>
+      <td>E</td>
+      <td>ACA</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>Sample_1</td>
+      <td>TGT</td>
+      <td>C</td>
+      <td>GTA</td>
+      <td>V</td>
+      <td>ATG</td>
+      <td>M/ START</td>
+      <td>***</td>
+      <td>-</td>
+      <td>AAA</td>
+      <td>K</td>
+    </tr>
+    <tr>
+      <td>Sample_2</td>
+      <td>TGT</td>
+      <td>C</td>
+      <td>GTA</td>
+      <td>V</td>
+      <td>ATG</td>
+      <td>M/ START</td>
+      <td>AAT</td>
+      <td>N</td>
+      <td>AAA</td>
+      <td>K</td>
+    </tr>
+  </table>
+  </p>
+</blockquote>
+
 
 <hr><h2>
 <a name="command-line" class="anchor" href="#command-line"><span class="octicon octicon-link"></span></a>Command line</h2>
