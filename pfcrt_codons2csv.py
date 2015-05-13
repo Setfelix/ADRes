@@ -6,7 +6,6 @@
 import getopt, sys #for handling options
 import os, string # standard imports
 import re #regex requirements
-#import time
 import csv #to write csv files
 import operator #helps to sort items in list
 
@@ -37,7 +36,7 @@ def inputfile_chk(inputfile):
       outputfile = inputfile[:-6] + "_pfcrt_codons_72_76.csv"
       read_inputfile(inputfile, outputfile) #pass input file to read_inputfile to run lines
     else:
-      print "File must be fasta format and needs \".fas\" or \".fasta\" extension.\nRecheck file and try again.\n"
+      print "File must be fasta format and needs \".fas\" or \".fasta\" extension.\n Recheck file and try again.\n"
       sys.exit()
   return inputfile, outputfile
   
