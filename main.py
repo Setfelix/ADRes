@@ -14,8 +14,8 @@ outputfile_location = sys.path[0]
 def usage():
     print "\nThis script takes a DNA fasta alignment file as input and outputs a csv file of sample_id, codon(s), and amino acid."
     print "Contact: Setor Amuzu, felixsetor@yahoo.com"
-    print "Usage: python pfcrt_codons2csv.py -i <inputfile.fas> -g <gene_name>"
-    print "Example: python pfcrt_codons2csv.py -i bwasw_pfcrt_aln.fas -g pfcrt"
+    print "Usage: python main.py -i <inputfile.fas> -g <gene_name>"
+    print "Example: python main.py -i bwasw_pfcrt_aln.fas -g pfcrt"
     print "Where inputfile is a fasta alignment of reference gene sequence and individual sample sequences of same gene."
     print "The following antimalarial drug resistance genes and codons are currently supported: "
     print "pfmdr1: 86, 184"
