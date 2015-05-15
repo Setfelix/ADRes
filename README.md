@@ -1,5 +1,5 @@
-pfcrt_codons
-============
+Codons in SNPs of antimalarial drug resistance genes
+====================================================
 pfcrt_codons2csv.py is a python script to output a csv file of sample name, codons (72-76) and corresponding amino acids from a fasta alignment of reference pfcrt gene sequence and individual sample sequences of same gene.
 
 If no command line arguments are given, the following information is displayed:
