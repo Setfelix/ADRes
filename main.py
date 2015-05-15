@@ -1,11 +1,17 @@
 #! /usr/bin/python
 __author__ = 'sefel'
 
-import getopt, sys  # for handling options
-import os, string  # standard imports
-import pfcrt_codons2csv
+import getopt
+import sys
+import os  # standard imports
 import re  # regular expressions
 import time
+# gene-specific imports
+import pfcrt
+import pfmdr1
+import dhps
+import dhfr
+
 
 outputfile_location = sys.path[0]
 # outputfile = ''
@@ -38,24 +44,24 @@ def inputfile_chk(inputfile, gene):
             outputfile = inputfile[:-4] + "_" + time.strftime(
                 '%d%m%Y') + ".csv"  # remove last four characters and append our output extension
             print "This is outputfile: %s" % (outputfile)
-            pfcrt_codons2csv.ofile = outputfile
-            pfcrt_codons2csv.read_inputfile(inputfile, outputfile)  # pass input file to read_inputfile to run lines
-            pfcrt_codons2csv.ofile = outputfile
+            pfcrt.ofile = outputfile
+            pfcrt.read_inputfile(inputfile, outputfile)  # pass input file to read_inputfile to run lines
+            pfcrt.ofile = outputfile
         elif regex2:
             outputfile = inputfile[:-6] + ".csv"
             print outputfile
-            pfcrt_codons2csv.ofile = outputfile
+            pfcrt.ofile = outputfile
             if gene == 'pfcrt':
-                pfcrt_codons2csv.read_inputfile(inputfile, outputfile)
+                pfcrt.read_inputfile(inputfile, outputfile)
             elif gene == 'pfmdr1':
                 #go to pfmdr1 parser
-                pass
+                pfmdr1.read_inputfile(inputfile, outputfile)
             elif gene == 'dhps':
                 #go to dhps parser
-                pass
+                dhps.read_inputfile(inputfile, outputfile)
             elif gene == 'dhfr':
                 #pass inputfile to dhfr parser
-                pass
+                dhfr.read_inputfile(inputfile, outputfile)
         else:
             print "File must be fasta format and needs \".fas\" or \".fasta\" extension.\n Recheck file and try again.\n"
             sys.exit()
@@ -100,10 +106,10 @@ def initiate(argv):
         if opt == '-h':
             usage()
             sys.exit()
-        elif opt in ("-i", "--input"):
+        elif opt in ("-i", "--input="):
             inputfile = arg
             print 'Input file is: %s' % (str.split(inputfile, '/')[-1])
-        elif opt in ("-g", "--gene"):
+        elif opt in ("-g", "--gene="):
             gene_name = str(arg)
             gene_name = gene_name.lower()
             if gene_name == 'pfcrt':

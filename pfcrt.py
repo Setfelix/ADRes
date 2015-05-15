@@ -1,26 +1,27 @@
-#! /usr/bin/python
+__author__ = 'sefel'
+# ! /usr/bin/python
 
-# This script takes a DNA fasta alignment file as input and outputs a csv file of sample_id, codon(s), and amino acid.
+# This script takes a DNA fasta alignment, of pfcrt(cds) and sample sequences (of same gene), as input and outputs a csv file of sample_id, codon(s), and amino acid
 
 # import required modules
-import getopt, sys  #for handling options
-import os, string  # standard imports
-import re  #regex requirements
-import csv  #to write csv files
-import operator  #helps to sort items in list
+import re  # regex requirements
+import csv  # to write csv files
+import operator  # helps to sort items in list
+
 import main
 
-ofile=''
-sample_list = []  #list of sample and codon information as class object
+
+ofile = ''
+sample_list = []  # list of sample and codon information as class object
 
 
 def write2csv(sl, of):
     """write effect of codons, i.e amino acid change, for each sample in tab-delimited file like this:
     Sample, Codon_position(one or more), Amino acid"""
 
-    #sort sample list by sample name
+    # sort sample list by sample name
     sl.sort(key=operator.attrgetter('name'))
-    #write samples to csv file
+    # write samples to csv file
     with open(of, 'wb') as out:
         sampleWriter = csv.writer(out, delimiter='\t', quotechar='"', quoting=csv.QUOTE_ALL)
         sampleWriter.writerow(
@@ -30,15 +31,15 @@ def write2csv(sl, of):
             sampleWriter.writerow(
                 [c.name, c.codon_72, c.codon_72_aa, c.codon_73, c.codon_73_aa, c.codon_74, c.codon_74_aa,
                  c.codon_75, c.codon_75_aa, c.codon_76, c.codon_76_aa])
-    # print
-    # print "Output file name is %s. It is saved in %s directory." % (str.split(ofile,'/')[-1], main.outputfile_location)
-    # print
+            # print
+            # print "Output file name is %s. It is saved in %s directory." % (str.split(ofile,'/')[-1], main.outputfile_location)
+            # print
 
 
-#make a class (codon) to store codons at different positions for each sample
+# make a class (codon) to store codons at different positions for each sample
 
 class codon(object):
-    #create a class of codons and their corresponding amino acids
+    # create a class of codons and their corresponding amino acids
     def __init__(self, name, codon_72, codon_72_aa, codon_73, codon_73_aa, codon_74, codon_74_aa, codon_75, codon_75_aa,
                  codon_76, codon_76_aa):
         self.name = name
@@ -57,14 +58,14 @@ class codon(object):
 def sample_class(seq_name, cd72, cd72aa, cd73, cd73aa, cd74, cd74aa, cd75, cd75aa, cd76, cd76aa):
     sample = codon(seq_name, cd72, cd72aa, cd73, cd73aa, cd74, cd74aa, cd75, cd75aa, cd76, cd76aa)
     sample_list.append(sample)
-    write2csv(sample_list, ofile)  #write codons, amino acids to CSV file
+    write2csv(sample_list, ofile)  # write codons, amino acids to CSV file
     return sample_list
 
 
 def read_inputfile(inputfile, outputfile, *args):
-    #read input file and generate list of samples with codon information
+    # read input file and generate list of samples with codon information
 
-    #read fasta alignment file
+    # read fasta alignment file
     with open(inputfile, 'r') as infile:
         inlines = infile.readlines()
 
