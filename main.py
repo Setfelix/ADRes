@@ -54,13 +54,13 @@ def inputfile_chk(inputfile, gene):
             if gene == 'pfcrt':
                 pfcrt.read_inputfile(inputfile, outputfile)
             elif gene == 'pfmdr1':
-                #go to pfmdr1 parser
+                # go to pfmdr1 parser
                 pfmdr1.read_inputfile(inputfile, outputfile)
             elif gene == 'dhps':
-                #go to dhps parser
+                # go to dhps parser
                 dhps.read_inputfile(inputfile, outputfile)
             elif gene == 'dhfr':
-                #pass inputfile to dhfr parser
+                # pass inputfile to dhfr parser
                 dhfr.read_inputfile(inputfile, outputfile)
         else:
             print "File must be fasta format and needs \".fas\" or \".fasta\" extension.\n Recheck file and try again.\n"
@@ -98,7 +98,7 @@ def initiate(argv):
     inputfile = ''
     gene_name = ''
     try:
-        opts, args = getopt.getopt(argv, "hi:g:", ["input=", "gene="])
+        opts, args = getopt.getopt(argv, "hi:g:", ["input", "gene"])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -106,7 +106,7 @@ def initiate(argv):
         if opt == '-h':
             usage()
             sys.exit()
-        elif opt in ("-i", "--input="):
+        elif opt in ("-i", "--input"):
             inputfile = arg
             print 'Input file is: %s' % (str.split(inputfile, '/')[-1])
         elif opt in ("-g", "--gene="):

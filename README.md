@@ -1,6 +1,7 @@
-Codons in SNPs of antimalarial drug resistance genes
-====================================================
-pfcrt_codons2csv.py is a python script to output a csv file of sample name, codons (72-76) and corresponding amino acids from a fasta alignment of reference pfcrt gene sequence and individual sample sequences of same gene.
+Detect SNPs in codons of antimalarial drug resistance genes
+===========================================================
+This repository is a collection of scripts used to identify SNPs in specific codons of Plasmodium falciparum genes that
+are implicated with antimalarial drug resistance. Currently, the following genes are supported pfcrt, pfmdr1, dhps, dhfr.
 
 If no command line arguments are given, the following information is displayed:
 
@@ -36,7 +37,6 @@ Outputfile_pfcrt_codons_72_76.csv
 Command line
 -------------------------------------------------------------------------------------------------------------
 
-python pfcrt_codons2csv.py inputfile.fas
+python main.py inputfile.fas
 
-Author:
-        Setor Amuzu (felixsetor@yahoo.com)
+
