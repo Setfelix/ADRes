@@ -3,6 +3,10 @@ Detect SNPs in codons of antimalarial drug resistance genes
 This repository is a collection of scripts used to identify SNPs in specific codons of Plasmodium falciparum genes that
 are implicated with antimalarial drug resistance. Currently, the following genes are supported pfcrt, pfmdr1, dhps, dhfr.
 
+-----------------------------------------------------------
+Usage
+-----------------------------------------------------------
+
 If no command line arguments are given, the following information is displayed:
 
 This script takes a DNA fasta alignment file as input and outputs a csv file of sample_id, codon(s), and amino acid.
