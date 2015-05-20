@@ -1,6 +1,6 @@
 Detect SNPs in codons of antimalarial drug resistance genes
 ===========================================================
-This repository is a collection of scripts used to identify SNPs in specific codons of Plasmodium falciparum genes that
+This repository is a collection of scripts used to identify SNPs in specific codons of _Plasmodium falciparum_ genes that
 are implicated with antimalarial drug resistance. Currently, the following genes are supported pfcrt, pfmdr1, dhps, dhfr.
 
 -----------------------------------------------------------
