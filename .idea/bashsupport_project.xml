@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="BashSupportProjectSettings">
-    <option name="globalVariables">
-      <set>
-        <option value="ab1_dir" />
-        <option value="gene" />
-        <option value="total_ab1" />
-        <option value="total_ab1_" />
-      </set>
-    </option>
-  </component>
-</project>
+<project version="4" />

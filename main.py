@@ -14,7 +14,6 @@ import dhfr
 
 
 outputfile_location = sys.path[0]
-# outputfile = ''
 
 
 def usage():

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Requirements: BWA, sam2fasta.py, abifpy,
+
 # Error reporting
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 <directory of ab1 files> <gene name>" >&2
@@ -23,5 +25,11 @@ fi
 # 1. Call bases from .ab1 files and output concatenated fastq file of all samples
 ./get_fastq_ab1.sh $1 $2
 
-#Convert SAM alignment to fasta using sam2fasta.py
-#written by Chang Park available here: http://sourceforge.net/projects/sam2fasta/files/
+# 2. Align sample sequences to reference coding sequence of same gene
+
+
+# 3. Convert SAM alignment to fasta using sam2fasta.py
+#    written by Chang Park available here: http://sourceforge.net/projects/sam2fasta/files/
+
+
+# 4. Parse FASTA alignment to output SNPs at specific codons and their corresponding amino acid changes
