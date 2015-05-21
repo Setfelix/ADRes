@@ -132,6 +132,4 @@ if __name__ == "__main__":
 
     else:
         initiate(sys.argv[1:])
-        # print "inputfile passed to main function"
-        # write2csv()  #write sample_list information to csv file
         sys.exit(0)
