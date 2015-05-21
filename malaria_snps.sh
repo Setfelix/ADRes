@@ -20,7 +20,7 @@ if [[ ! -d "$1" || -L "$1" ]]; then
   exit 1
 fi
 
-# 1. Call bases from .ab1 files and output fastq file
+# 1. Call bases from .ab1 files and output concatenated fastq file of all samples
 ./get_fastq_ab1.sh $1 $2
 
 #Convert SAM alignment to fasta using sam2fasta.py
