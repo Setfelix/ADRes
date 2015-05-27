@@ -29,14 +29,41 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h1>
-<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h1>
+<a id="detect-snps-in-codons-of-antimalarial-drug-resistance-genes" class="anchor" href="#detect-snps-in-codons-of-antimalarial-drug-resistance-genes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detect SNPs in codons of antimalarial drug resistance genes</h1>
 
 <p><code>anti_malaria_snps.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 <em>Plasmodium falciparum</em> genes that are associated with antimalarial drug resistance. 
-Currently, the following genes and codons are supported <em>pfcrt, pfmdr1, dhps, dhfr</em>.</p>
+Currently, the following antimalarial drug resistance genes and codons are supported:</p>
 
-<p>Using Sanger sequencing ab1 trace files of whole gene (or regions spanning codons of interest) from several samples, 
-this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acid.</p>
+<table>
+<thead>
+<tr>
+<th>Gene</th>
+<th align="center">Codons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>pfmdr1</em></td>
+<td align="center">86, 184</td>
+</tr>
+<tr>
+<td><em>pfcrt</em></td>
+<td align="center">72, 73, 74, 75, 76</td>
+</tr>
+<tr>
+<td><em>dhps</em></td>
+<td align="center">436, 437, 540, 581, 613</td>
+</tr>
+<tr>
+<td><em>dhfr</em></td>
+<td align="center">51, 59, 108, 164</td>
+</tr>
+</tbody>
+</table>
+
+<p>Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
+this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.</p>
 
 <p>This pipeline is a combination of existing tools (such as <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>) and custom scripts and is made up of the following steps:</p>
 
@@ -73,7 +100,10 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <hr>
 
 <h2>
-<a id="sample-output" class="anchor" href="#sample-output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample output</h2>
+<a id="output" class="anchor" href="#output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Output</h2>
+
+<p>The output file is named in this format: <code>gene_dd_mm_yy.csv</code> and is stored in the <code>&lt;directory_of_ab1_files&gt;</code>
+The output for the example above could look like this:</p>
 
 <table>
 <thead>
