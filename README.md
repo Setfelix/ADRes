@@ -7,7 +7,7 @@ Currently, the following genes are supported _pfcrt, pfmdr1, dhps, dhfr_.
 Using Sanger sequencing ab1 trace files of whole gene (or regions spanning codons of interest) from several samples, 
 this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acid.
 
-This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.sourceforge.net/)) and custom scripts and is made up of the following steps:
+This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy)) and custom scripts and is made up of the following steps:
 
 1. base calling and quality control, 
 2. alignment of trimmed and filtered sequences to coding sequence of respective reference gene, 
