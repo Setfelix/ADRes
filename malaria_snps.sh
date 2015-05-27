@@ -4,21 +4,21 @@
 
 # Error reporting
 if [ "$#" -ne 3 ]; then
-  echo "Usage: $0 <directory_of_ab1_files> <path_to_reference_coding_sequence> <gene_name>" >&2
-  echo "gene_name is pfcrt, pfmdr1, dhfr or dhps"
+  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene>" >&2
+  echo "gene is pfcrt, pfmdr1, dhfr or dhps"
   exit 1
 fi
 if ! [ -e "$1" ]; then
   echo "$1 not found" >&2
-  echo "Usage: $0 <directory_of_ab1_files> <path_to_reference_coding_sequence> <gene_name>" >&2
-  echo "gene_name is pfcrt, pfmdr1, dhfr or dhps"
+  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene>" >&2
+  echo "gene is pfcrt, pfmdr1, dhfr or dhps"
   exit 1
 fi
 if [[ ! -d "$1" || -L "$1" ]]; then
   #If argument is not a directory or is a symbolic link
   echo "$1 not a directory" >&2
-  echo "Usage: $0 <directory_of_ab1_files> <path_to_reference_coding_sequence> <gene_name>" >&2
-  echo "gene_name is pfcrt, pfmdr1, dhfr or dhps"
+  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene>" >&2
+  echo "gene is pfcrt, pfmdr1, dhfr or dhps"
   exit 1
 fi
 
