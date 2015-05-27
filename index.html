@@ -1,150 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Pfcrt codons by Setfelix</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <title>Anti-malarial SNPs by Setfelix</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/Setfelix/pfcrt_codons">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/Setfelix/pfcrt_codons/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/Setfelix/pfcrt_codons/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <header>
+      <div class="inner">
+        <h1>Anti-malarial SNPs</h1>
+        <h2>Pipeline to detect SNPs in specific codons of genes associated with antimalarial drug resistance</h2>
+        <a href="https://github.com/Setfelix/anti_malaria_snps" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
 
-    <div class="wrapper">
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h1>
 
-      <section>
-        <div id="title">
-          <h1>Pfcrt codons</h1>
-          <p>Contains a script to output a csv file of sample name, codons (72-76) and corresponding amino acids from fasta alignment of reference pfcrt gene coding sequence and individual sample sequences of entire pfcrt gene (or regions of it).</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/Setfelix">Setfelix</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+<p><code>anti_malaria_snps.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
+<em>Plasmodium falciparum</em> genes that are associated with antimalarial drug resistance. 
+Currently, the following genes and codons are supported <em>pfcrt, pfmdr1, dhps, dhfr</em>.</p>
 
-        <h1>
-<a name="pfcrt_codons" class="anchor" href="#pfcrt_codons"><span class="octicon octicon-link"></span></a>pfcrt_codons</h1>
+<p>Using Sanger sequencing ab1 trace files of whole gene (or regions spanning codons of interest) from several samples, 
+this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acid.</p>
 
-<p>pfcrt_codons2csv.py is a python script to output a csv file of sample name, codons (72-76) and corresponding amino acids from a fasta alignment of reference pfcrt gene coding sequence and individual sample sequences of entire pfcrt gene (or regions of it).</p>
+<p>This pipeline is a combination of existing tools (such as <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>) and custom scripts and is made up of the following steps:</p>
 
-<p>If no command line arguments are given, the following information is displayed:<br></p>
+<ol>
+<li>Base calling and quality control, </li>
+<li>Alignment of trimmed and filtered sequences to coding sequence of respective reference gene, </li>
+<li>Conversion of alignment from SAM to FASTA format, </li>
+<li>Parse FASTA alignment to output codons and corresponding amino acid in CSV format.</li>
+</ol>
 
-<p>
-<i>
-  This script takes a DNA fasta alignment file as input and outputs a csv file of sample_id, codon(s), and amino acid.<br>
-  Contact: Setor Amuzu, <a href="mailto:felixsetor@yahoo.com">felixsetor@yahoo.com</a><br>
-  Usage: python pfcrt_codons2csv.py inputfile.fas<br>
-</i>
-</p>
+<hr>
 
-<p>Where inputfile.fas is a fasta alignment of reference pfcrt gene sequence and individual sample sequences of same gene.</p>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>Example:</p>
+<pre><code>     bash anti_malaria_snps.sh &lt;directory_of_ab1_files&gt; &lt;reference_gene_coding_sequence&gt; &lt;gene&gt;
+</code></pre>
 
-<hr><h2>
-<a name="inputfile-obtained-by-converting-bwa-bwasw-sam-alignment-file-to-fasta-format" class="anchor" href="#inputfile-obtained-by-converting-bwa-bwasw-sam-alignment-file-to-fasta-format"><span class="octicon octicon-link"></span></a>Inputfile.fas (obtained by converting bwa bwasw SAM alignment file to fasta format using <a href="http://sourceforge.net/projects/sam2fasta/">sam2fasta.py</a>)</h2>
+<p>where: </p>
 
-<blockquote>
-<p>
-Ref_pfcrt_gene
-AAAGAGATTAAGGATAATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATGAATAAAATTTTTGCT
-Sample_1
-AAAGAGA*TAAGGATAATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATTGAAACAATTTTTGCT
-Sample_2
-AAAGAGA*TAAGG**AATATTTTTATTTATATTTTAAGTATTATTTATTTAAGTGTATGTGTAATG***AAAATTTTTGCT
-</p>
-</blockquote>
+<pre><code>    &lt;directory_of_ab1_files&gt; is directory containing ab1 trace files of a single gene
+    &lt;reference_gene_coding_sequence&gt; is path to reference coding sequence
+    &lt;gene&gt; is pfcrt, pfmdr1, dhps, or dhfr
+</code></pre>
 
-<hr><h2>
-<a name="outputfile_pfcrt_codons_72_76csv" class="anchor" href="#outputfile_pfcrt_codons_72_76csv"><span class="octicon octicon-link"></span></a>Outputfile_pfcrt_codons_72_76.csv</h2>
+<hr>
 
-<blockquote>
-  <p>
-  <table border="0" style="width:300px">
-    <tr>
-      <td>Sample</td>
-      <td>Codon_72</td>
-      <td>Codon_72_aa</td>
-      <td>Codon_73</td>
-      <td>Codon_73_aa</td>
-      <td>Codon_74</td>
-      <td>Codon_74_aa</td>
-      <td>Codon_75</td>
-      <td>Codon_75_aa</td>
-      <td>Codon_76</td>
-      <td>Codon_76_aa</td>
-    </tr>
-    <tr>
-      <td>Ref_pfcrt_gene</td>
-      <td>TGT</td>
-      <td>C</td>
-      <td>GTA</td>
-      <td>V</td>
-      <td>ATT</td>
-      <td>I</td>
-      <td>GAA</td>
-      <td>E</td>
-      <td>ACA</td>
-      <td>T</td>
-    </tr>
-    <tr>
-      <td>Sample_1</td>
-      <td>TGT</td>
-      <td>C</td>
-      <td>GTA</td>
-      <td>V</td>
-      <td>ATG</td>
-      <td>M/ START</td>
-      <td>***</td>
-      <td>-</td>
-      <td>AAA</td>
-      <td>K</td>
-    </tr>
-    <tr>
-      <td>Sample_2</td>
-      <td>TGT</td>
-      <td>C</td>
-      <td>GTA</td>
-      <td>V</td>
-      <td>ATG</td>
-      <td>M/ START</td>
-      <td>AAT</td>
-      <td>N</td>
-      <td>AAA</td>
-      <td>K</td>
-    </tr>
-  </table>
-  </p>
-</blockquote>
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
 
+<pre><code>    bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt
+</code></pre>
 
-<hr><h2>
-<a name="command-line" class="anchor" href="#command-line"><span class="octicon octicon-link"></span></a>Command line</h2>
+<hr>
 
-<p><i>python pfcrt_codons2csv.py inputfile.fas</i></p>
+<h2>
+<a id="sample-output" class="anchor" href="#sample-output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample output</h2>
 
-<p>Author:
-        Setor Amuzu (<a href="mailto:felixsetor@yahoo.com">felixsetor@yahoo.com</a>)</p>
-      </section>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Codon_72</th>
+<th>Codon_72_aa</th>
+<th>Codon_73</th>
+<th>Codon_73_aa</th>
+<th>Codon_74</th>
+<th>Codon_74_aa</th>
+<th>Codon_75</th>
+<th>Codon_75_aa</th>
+<th>Codon_76</th>
+<th>Codon_76_aa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>89C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>90C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>92C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>93C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>94C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>97C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>99C_CRT</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+<tr>
+<td>PfCRT_ref</td>
+<td>TGT</td>
+<td>C</td>
+<td>GTA</td>
+<td>V</td>
+<td>ATG</td>
+<td>M</td>
+<td>AAT</td>
+<td>N</td>
+<td>AAA</td>
+<td>K</td>
+</tr>
+</tbody>
+</table>
+        </section>
 
+        <aside id="sidebar">
+          <a href="https://github.com/Setfelix/anti_malaria_snps/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Setfelix/anti_malaria_snps/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Setfelix/anti_malaria_snps"></a> is maintained by <a href="https://github.com/Setfelix">Setfelix</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
+  
   </body>
 </html>
