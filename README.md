@@ -2,7 +2,11 @@ Detect SNPs in codons of antimalarial drug resistance genes
 ===========================================================
 `anti_malaria_snps.sh` is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 _Plasmodium falciparum_ genes that are associated with antimalarial drug resistance. 
-Currently, the following genes and codons are supported _pfcrt, pfmdr1, dhps, dhfr_.
+Currently, the following antimalarial drug resistance genes and codons are supported:
+    _pfmdr1_: 86, 184
+    _pfcrt_: 72,73,74,75,76
+    _dhps_: 436, 437, 540, 581, 613
+    _dhfr_: 51, 59, 108, 164
 
 Using Sanger sequencing ab1 trace files of whole gene (or regions spanning codons of interest) from several samples, 
 this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acid.
@@ -31,8 +35,10 @@ Example
         bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt
 
 -------------------------------------------------------------------------------------------------------------
-Sample output
+Output
 -------------------------------------------------------------------------------------------------------------
+The output file is named in this format: `gene_dd_mm_yy.csv` and is stored in the `<directory_of_ab1_files>`
+The output for the example above could look like this:
 
 | Sample   | Codon_72 | Codon_72_aa | Codon_73 | Codon_73_aa | Codon_74 | Codon_74_aa | Codon_75 | Codon_75_aa | Codon_76 | Codon_76_aa |
 |----------|----------|-------------|----------|-------------|----------|-------------|----------|-------------|----------|-------------|
