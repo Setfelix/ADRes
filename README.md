@@ -44,7 +44,7 @@ The output file is named in this format: `gene_dd_mm_yy.csv` and is stored in th
 The output for the example above could look like this:
 
 | Sample   | Codon_72 | Codon_72_aa | Codon_73 | Codon_73_aa | Codon_74 | Codon_74_aa | Codon_75 | Codon_75_aa | Codon_76 | Codon_76_aa |
-|----------|----------|-------------|----------|-------------|----------|-------------|----------|-------------|----------|-------------|
+|----------|:--------:|:-----------:|:--------:|:-----------:|:--------:|:-----------:|:--------:|:-----------:|:--------:|:-----------:|
 | 89C_CRT  | TGT      | C           | GTA      | V           | ATG      | M           | AAT      | N           | AAA      | K           |
 | 90C_CRT  | TGT      | C           | GTA      | V           | ATG      | M           | AAT      | N           | AAA      | K           |
 | 92C_CRT  | TGT      | C           | GTA      | V           | ATG      | M           | AAT      | N           | AAA      | K           |
