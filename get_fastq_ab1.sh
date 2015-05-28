@@ -10,7 +10,7 @@ ab1_dir=$1 # directory where ab1 files are located
 gene=$2
 
 #remove any fastq files in ab1_dir if they exist
-fastq_files=($ab1_dir/*.fastq)
+fastq_files=($ab1_dir*.fastq)
   if [[ "${#fastq_files[@]}" -gt 0 ]] ; then
     cd $ab1_dir
     rm *.fastq

@@ -12,8 +12,8 @@ import pfmdr1
 import dhps
 import dhfr
 
-
 outputfile_location = sys.path[0]
+outputfile = ''
 
 
 def usage():
@@ -35,32 +35,35 @@ def inputfile_chk(inputfile, gene):
         print "Input file not found"
         sys.exit()
     else:
-        # global outputfile
+        global outputfile
         # check for .fas or .fasta extension
         regex = re.match(".*?\.fas$", inputfile)
         regex2 = re.match(".*?\.fasta$", inputfile)
         if regex:
-            outputfile = inputfile[:-4] + "_" + time.strftime(
+            outputfile = outputfile + inputfile[:-4] + "_" + time.strftime(
                 '%d%m%Y') + ".csv"  # remove last four characters and append our output extension
             print "This is outputfile: %s" % (outputfile)
-            pfcrt.ofile = outputfile
-            pfcrt.read_inputfile(inputfile, outputfile)  # pass input file to read_inputfile to run lines
-            pfcrt.ofile = outputfile
+            # pass input file to read_inputfile to run lines
+
         elif regex2:
-            outputfile = inputfile[:-6] + ".csv"
-            print outputfile
-            pfcrt.ofile = outputfile
+            outputfile = outputfile + inputfile[:-6] + "_" + time.strftime('%d%m%Y') + ".csv"
+            print "This is outputfile: %s" % (outputfile)
+
             if gene == 'pfcrt':
                 pfcrt.read_inputfile(inputfile, outputfile)
+                pfcrt.ofile = outputfile
             elif gene == 'pfmdr1':
                 # go to pfmdr1 parser
                 pfmdr1.read_inputfile(inputfile, outputfile)
+                pfmdr1.ofile = outputfile
             elif gene == 'dhps':
                 # go to dhps parser
                 dhps.read_inputfile(inputfile, outputfile)
+                dhps.ofile = outputfile
             elif gene == 'dhfr':
                 # pass inputfile to dhfr parser
                 dhfr.read_inputfile(inputfile, outputfile)
+                dhfr.ofile = outputfile
         else:
             print "File must be fasta format and needs \".fas\" or \".fasta\" extension.\n Recheck file and try again.\n"
             sys.exit()
