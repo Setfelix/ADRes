@@ -18,7 +18,7 @@ fastq_files=($ab1_dir*.fastq)
   fi
 
 
-for file in ${ab1_dir}/*.ab1
+for file in ${ab1_dir}*.ab1
 do
   echo "processing..." $file
   python ab1_to_fastq.py $file

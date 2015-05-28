@@ -11,7 +11,7 @@ import operator  # helps to sort items in list
 import main
 
 
-ofile = ''
+# ofile = main.outputfile
 sample_list = []  # list of sample and codon information as class object
 
 
