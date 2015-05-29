@@ -24,9 +24,11 @@ def write2csv(sl, of):
     # write samples to csv file
     with open(of, 'wb') as out:
         sampleWriter = csv.writer(out, delimiter='\t', quotechar='"', quoting=csv.QUOTE_ALL)
-        sampleWriter.writerow(["Sample", "Codon_86", "Codon_86_aa", "Codon_184", "Codon_184_aa"])
+        sampleWriter.writerow(["Sample", "Codon_86", "Codon_86_aa", "Codon_184", "Codon_184_aa", "Codon_1034",
+                               "Codon_1034_aa", "Codon_1042", "Codon_1042_aa", "Codon_1246", "Codon_1246_aa"])
         for c in sl:
-            sampleWriter.writerow([c.name, c.codon_86, c.codon_86_aa, c.codon_184, c.codon_184_aa])
+            sampleWriter.writerow([c.name, c.codon_86, c.codon_86_aa, c.codon_184, c.codon_184_aa, c.codon_1034,
+                                   c.codon_1034_aa, c.codon_1042, c.codon_1042_aa, c.codon_1246, c.codon_1246_aa])
 
 
 # make a class (codon) to store codons at different positions for each sample

@@ -23,7 +23,7 @@ def usage():
     print "Example: python main.py -i bwasw_pfcrt_aln.fas -g pfcrt"
     print "Where inputfile is a fasta alignment of reference gene sequence and individual sample sequences of same gene."
     print "The following antimalarial drug resistance genes and codons are currently supported: "
-    print "pfmdr1: 86, 184"
+    print "pfmdr1: 86, 184, 1034, 1042, 1246"
     print "pfcrt: 72,73,74,75,76"
     print "dhps: 436, 437, 540, 581, 613"
     print "dhfr: 51, 59, 108, 164\n"
@@ -122,7 +122,7 @@ def initiate(argv):
             if gene_name == 'pfcrt':
                 print 'SNPs in codons 72, 73, 74, 75, 76 of pfcrt gene will be reported.'
             elif gene_name == 'pfmdr1':
-                print 'SNPs in codons 86, 184 of pfmdr1 will be reported.'
+                print 'SNPs in codons 86, 184, 1034, 1042, 1246 of pfmdr1 will be reported.'
             elif gene_name == 'dhps':
                 print 'SNPs in codons 436, 437, 540, 581, 613 will be reported.'
             elif gene_name == 'dhfr':
