@@ -4,12 +4,12 @@ Detect SNPs in codons of antimalarial drug resistance genes
 _Plasmodium falciparum_ genes that are associated with antimalarial drug resistance. 
 Currently, the following antimalarial drug resistance genes and codons are supported:
 
-| Gene     | Codons                  |
-|----------|:-----------------------:|
-| _pfmdr1_ | 86, 184                 |
-| _pfcrt_  | 72, 73, 74, 75, 76      |
-| _dhps_   | 436, 437, 540, 581, 613 |
-| _dhfr_   | 51, 59, 108, 164        |
+| Gene     | Codons                   |
+|----------|:------------------------:|
+| _pfmdr1_ | 86, 184, 1034, 1042,1246 |
+| _pfcrt_  | 72, 73, 74, 75, 76       |
+| _dhps_   | 436, 437, 540, 581, 613  |
+| _dhfr_   | 51, 59, 108, 164         |
 
 Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
 this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.

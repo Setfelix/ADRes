@@ -33,16 +33,23 @@ def write2csv(sl, of):
 
 class codon(object):
     # create a class of codons and their corresponding amino acids
-    def __init__(self, name, codon_86, codon_86_aa, codon_184, codon_184_aa):
+    def __init__(self, name, codon_86, codon_86_aa, codon_184, codon_184_aa, codon_1034, codon_1034_aa, codon_1042,
+                 codon_1042_aa, codon_1246, codon_1246_aa):
         self.name = name
         self.codon_86 = codon_86
         self.codon_86_aa = codon_86_aa
         self.codon_184 = codon_184
         self.codon_184_aa = codon_184_aa
+        self.codon_1034 = codon_1034
+        self.codon_1034_aa = codon_1034_aa
+        self.codon_1042 = codon_1042
+        self.codon_1042_aa = codon_1042_aa
+        self.codon_1246 = codon_1246
+        self.codon_1246_aa = codon_1246_aa
 
 
-def sample_class(seq_name, cd86, cd86aa, cd184, cd184aa):
-    sample = codon(seq_name, cd86, cd86aa, cd184, cd184aa)
+def sample_class(seq_name, cd86, cd86aa, cd184, cd184aa, cd1034, cd1034aa, cd1042, cd1042aa, cd1246, cd1246aa):
+    sample = codon(seq_name, cd86, cd86aa, cd184, cd184aa, cd1034, cd1034aa, cd1042, cd1042aa, cd1246, cd1246aa)
     sample_list.append(sample)
     write2csv(sample_list, ofile)  # write codons, amino acids to CSV file
     return sample_list
@@ -91,6 +98,9 @@ def read_inputfile(inputfile, outputfile, *args):
         codon_number = 0
         codon_86 = ""
         codon_184 = ""
+        codon_1034 = ""
+        codon_1042 = ""
+        codon_1246 = ""
         i_seq = ""
         if seq_rx.search(inlines[i + 1]):
             i_seq += str(inlines[i + 1].rstrip('\n'))
@@ -102,9 +112,17 @@ def read_inputfile(inputfile, outputfile, *args):
                     codon_86 += codon
                 elif codon_number == 184:
                     codon_184 += codon
+                elif codon_number == 1034:
+                    codon_1034 += codon
+                elif codon_number == 1042:
+                    codon_1042 += codon
+                elif codon_number == 1246:
+                    codon_1246 += codon
 
         #pass sample and codon information to sample_class function to create codon object etc.
-        sample_class(seq_id, codon_86, main.amino_acid(codon_86), codon_184, main.amino_acid(codon_184))
+        sample_class(seq_id, codon_86, main.amino_acid(codon_86), codon_184, main.amino_acid(codon_184), codon_1034,
+                     main.amino_acid(codon_1034), codon_1042, main.amino_acid(codon_1042), codon_1246,
+                     main.amino_acid(codon_1246))
 
     return outputfile
 
