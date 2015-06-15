@@ -25,8 +25,8 @@ This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.s
 Installation
 -----------------------------------------------------------
 
-    * Download the `.zip` or `.tar.gz` file and extract
-    * Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
+* Download the `.zip` or `.tar.gz` file and extract
+* Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
 
 -----------------------------------------------------------
 Usage
