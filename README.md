@@ -22,6 +22,13 @@ This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.s
 4. Parse FASTA alignment to output codons and corresponding amino acid in CSV format.
 
 -----------------------------------------------------------
+Installation
+-----------------------------------------------------------
+
+    * Download the `.zip` or `.tar.gz` file and extract
+    * Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
+
+-----------------------------------------------------------
 Usage
 -----------------------------------------------------------
 
