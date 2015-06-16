@@ -24,11 +24,9 @@ This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.s
 -----------------------------------------------------------
 Installation
 -----------------------------------------------------------
-First, ensure that the dependencies are installed. 
-Follow the respective links to install: [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy)
-
-* Download the [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
-* Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
+1. First, ensure that the dependencies are installed. Follow the respective links to install: [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy)
+2. Download the source [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
+3. Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
 
 -----------------------------------------------------------
 Usage
