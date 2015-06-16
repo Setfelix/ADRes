@@ -77,9 +77,21 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <hr>
 
 <h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>First, ensure that the dependencies are installed. Follow the respective links to install: <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>
+</li>
+<li>Download the source <a href="https://github.com/Setfelix/anti_malaria_snps/zipball/master"><code>.zip</code></a> or <a href="https://github.com/Setfelix/anti_malaria_snps/tarball/master"><code>.tar.gz</code></a> file and extract</li>
+<li>Optionally, add the anti_malaria_snps directory to your <code>$PATH</code> (in <code>.bashrc</code>, for example, to make it persistent) </li>
+</ol>
+
+<hr>
+
+<h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<pre><code>     bash anti_malaria_snps.sh &lt;directory_of_ab1_files&gt; &lt;reference_gene_coding_sequence&gt; &lt;gene&gt;
+<pre><code>     bash anti_malaria_snps.sh &lt;directory_of_ab1_files&gt; &lt;reference_gene_coding_sequence&gt; &lt;gene&gt; &lt;quality_cutoff&gt;
 </code></pre>
 
 <p>where: </p>
@@ -87,6 +99,9 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <pre><code>    &lt;directory_of_ab1_files&gt; is directory containing ab1 trace files of a single gene
     &lt;reference_gene_coding_sequence&gt; is path to reference coding sequence
     &lt;gene&gt; is pfcrt, pfmdr1, dhps, or dhfr
+    &lt;quality_cutoff&gt; is the error probability for trimming bases. 
+                    Trimming is based on modified Richard Mott's algorithm.
+                    This argument is OPTIONAL. Default value is 0.05.
 </code></pre>
 
 <hr>
@@ -94,7 +109,7 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <h2>
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
 
-<pre><code>    bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt
+<pre><code>    bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt 0.01
 </code></pre>
 
 <hr>
