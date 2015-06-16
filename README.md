@@ -24,25 +24,30 @@ This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.s
 -----------------------------------------------------------
 Installation
 -----------------------------------------------------------
+First, ensure that the dependencies are installed. 
+Follow the respective links to install: [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy))
 
-* Download the `.zip` or `.tar.gz` file and extract
+* Download the [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
 * Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
 
 -----------------------------------------------------------
 Usage
 -----------------------------------------------------------
 
-         bash anti_malaria_snps.sh <directory_of_ab1_files> <reference_gene_coding_sequence> <gene>
+         bash anti_malaria_snps.sh <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>
 where: 
         
         <directory_of_ab1_files> is directory containing ab1 trace files of a single gene
         <reference_gene_coding_sequence> is path to reference coding sequence
         <gene> is pfcrt, pfmdr1, dhps, or dhfr
+        <quality_cutoff> is the error probability for trimming bases. 
+                        Trimming is based on modified Richard Mott's algorithm.
+                        This argument is OPTIONAL. Default value is 0.05.
         
 -------------------------------------------------------------------------------------------------------------
 Example
 -------------------------------------------------------------------------------------------------------------
-        bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt
+        bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt 0.01
 
 ------------------------------------------------------------------------------------------------------------
 Output
