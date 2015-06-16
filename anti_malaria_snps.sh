@@ -3,7 +3,7 @@
 # Requirements: BWA, sam2fasta.py, abifpy
 
 # Error reporting
-if [ "$#" -ge 3 ]; then
+if ! [ "$#" -ge 3 ]; then
   echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
   echo "quality_cutoff is between 0 and 1. quality_cutoff is optional"
