@@ -2,7 +2,7 @@ Detect SNPs in codons of antimalarial drug resistance genes
 ===========================================================
 `anti_malaria_snps.sh` is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 _Plasmodium falciparum_ genes that are associated with antimalarial drug resistance. 
-Currently, the following antimalarial drug resistance genes and codons are supported:
+Currently, the following genes and codons are supported:
 
 | Gene     | Codons                   |
 |----------|:------------------------:|
