@@ -67,7 +67,7 @@ The output for the example above could look like this:
 ------------------------------------------------------------------------------------------------------------
 Example data
 ------------------------------------------------------------------------------------------------------------
-Some example data can be downloaded here.
+Some example data can be downloaded [here](https://github.com/Setfelix/anti_malaria_snps/example_data/tarball/master).
 This includes 50 ab1 trace files obtained from sequencing regions of _pfcrt_ gene spanning codons 72 - 76 from 50 _P. falciparum_ individuals.
 The reference coding sequence for _pfcrt_ is also included. This was originally downloaded from plasmodb.org.
 
