@@ -64,3 +64,10 @@ The output for the example above could look like this:
 | 99C_CRT  | TGT      | C           | GTA      | V           | ATG      | M           | AAT      | N           | AAA      | K           |
 | PfCRT_ref| TGT      | C           | GTA      | V           | ATG      | M           | AAT      | N           | AAA      | K           |
 
+------------------------------------------------------------------------------------------------------------
+Example data
+------------------------------------------------------------------------------------------------------------
+Some example data can be downloaded here.
+This includes 50 ab1 trace files obtained from sequencing regions of _pfcrt_ gene spanning codons 72 - 76 from 50 _P. falciparum_ individuals.
+The reference coding sequence for _pfcrt_ is also included. This was originally downloaded from plasmodb.org.
+
