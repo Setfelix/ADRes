@@ -35,12 +35,13 @@ Usage
          bash anti_malaria_snps.sh <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>
 where: 
         
-        <directory_of_ab1_files> is directory containing ab1 trace files of a single gene
-        <reference_gene_coding_sequence> is path to reference coding sequence
+        <directory_of_ab1_files> is directory containing ab1 trace files of a single gene (pfcrt, pfmdr1, dhps, or dhfr)
+        <reference_gene_coding_sequence> is path to reference coding sequence of respective gene
         <gene> is pfcrt, pfmdr1, dhps, or dhfr
         <quality_cutoff> is the error probability for trimming bases. 
                         Trimming is based on modified Richard Mott's algorithm.
                         This argument is OPTIONAL. Default value is 0.05.
+                        Legal values range from 0 to 1.
         
 -------------------------------------------------------------------------------------------------------------
 Example
@@ -67,7 +68,16 @@ The output for the example above could look like this:
 ------------------------------------------------------------------------------------------------------------
 Example data
 ------------------------------------------------------------------------------------------------------------
-Some example data can be downloaded [here](https://github.com/Setfelix/anti_malaria_snps/example_data/tarball/master).
-This includes 50 ab1 trace files obtained from sequencing regions of _pfcrt_ gene spanning codons 72 - 76 from 50 _P. falciparum_ individuals.
-The reference coding sequence for _pfcrt_ is also included. This was originally downloaded from plasmodb.org.
+The archived file containing the source code for this pipeline also contains some `example_data`.
+The `example_data` directory contains:
+    1. `example_ab1`            : This directory contains 50 ab1 trace files obtained from sequencing regions of 
+                                  _pfcrt_ gene spanning codons 72 - 76 from 50 _P. falciparum_ individuals.
+                                  This directory can be used as `<directory_of_ab1_files>`.
+                                  It also contains 3 intermediate files (`pfcrt_30_06_15.fasta`, `pfcrt_30_06_15.sam`, 
+                                  `pfcrt_30_06_15.fastq`) and the main output file (`pfcrt_30_06_15.csv`)
+                                  Typically, your `<directory_of_ab1_files>` will not contain any intermediate files or
+                                  output file until you have ran the pipeline successfully.
+    2. `pfcrt_pf3d7_cds.fasta`  : The reference coding sequence for _pfcrt_. 
+                                  This file can be used as `<reference_gene_coding_sequence>`.
+                                  was originally downloaded from [plasmodb.org](http://plasmodb.org/plasmo/).
 
