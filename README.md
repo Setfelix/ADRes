@@ -73,7 +73,7 @@ The archived file containing the source code for this pipeline also contains som
 The `example_data` directory contains:
 
 1. `example_ab1`             : This directory contains 50 ab1 trace files obtained from sequencing regions of _pfcrt_ 
-                               gene spanning codons 72 - 76 from 50 _P. falciparum_ individuals.
+                               spanning codons 72 - 76 from 50 _P. falciparum_ isolates.
                                This directory can be used as `<directory_of_ab1_files>`. 
                                It also contains 3 intermediate files (`pfcrt_30_06_15.fasta`, `pfcrt_30_06_15.sam`, 
                                `pfcrt_30_06_15.fastq`) and the main output file (`pfcrt_30_06_15.csv`).
