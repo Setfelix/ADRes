@@ -33,7 +33,7 @@
 
 <p><code>anti_malaria_snps.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 <em>Plasmodium falciparum</em> genes that are associated with antimalarial drug resistance. 
-Currently, the following antimalarial drug resistance genes and codons are supported:</p>
+Currently, the following genes and codons are supported:</p>
 
 <table>
 <thead>
@@ -96,12 +96,13 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 
 <p>where: </p>
 
-<pre><code>    &lt;directory_of_ab1_files&gt; is directory containing ab1 trace files of a single gene
-    &lt;reference_gene_coding_sequence&gt; is path to reference coding sequence
+<pre><code>    &lt;directory_of_ab1_files&gt; is directory containing ab1 trace files of a single gene (pfcrt, pfmdr1, dhps, or dhfr)
+    &lt;reference_gene_coding_sequence&gt; is path to reference coding sequence of respective gene
     &lt;gene&gt; is pfcrt, pfmdr1, dhps, or dhfr
     &lt;quality_cutoff&gt; is the error probability for trimming bases. 
                     Trimming is based on modified Richard Mott's algorithm.
                     This argument is OPTIONAL. Default value is 0.05.
+                    Legal values range from 0 to 1.
 </code></pre>
 
 <hr>
@@ -243,6 +244,27 @@ The output for the example above could look like this:</p>
 </tr>
 </tbody>
 </table>
+
+<hr>
+
+<h2>
+<a id="example-data" class="anchor" href="#example-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example data</h2>
+
+<p>The archived file containing the source code for this pipeline also contains some <code>example_data</code>.
+The <code>example_data</code> directory contains:</p>
+
+<ol>
+<li><p><code>example_ab1</code>             : This directory contains 50 ab1 trace files obtained from sequencing regions of <em>pfcrt</em> 
+                           spanning codons 72 - 76 from 50 <em>P. falciparum</em> isolates.
+                           This directory can be used as <code>&lt;directory_of_ab1_files&gt;</code>. 
+                           It also contains 3 intermediate files (<code>pfcrt_30_06_15.fasta</code>, <code>pfcrt_30_06_15.sam</code>, 
+                           <code>pfcrt_30_06_15.fastq</code>) and the main output file (<code>pfcrt_30_06_15.csv</code>).
+                           Typically, <code>&lt;directory_of_ab1_files&gt;</code> will not contain any intermediate files or 
+                           output file until you have ran the pipeline successfully.</p></li>
+<li><p><code>pfcrt_pf3d7_cds.fasta</code>   : The reference coding sequence for <em>pfcrt</em>. 
+                           This file can be used as <code>&lt;reference_gene_coding_sequence&gt;</code>. 
+                           Reference was originally downloaded from <a href="http://plasmodb.org/plasmo/">plasmodb.org</a>.</p></li>
+</ol>
         </section>
 
         <aside id="sidebar">
