@@ -100,7 +100,7 @@ def read_inputfile(inputfile, outputfile, *args):
         if seq_id_rx.search(inlines[i]):
             seq_id += inlines[i].rstrip('\n')
             seq_id = seq_id.lstrip('>')
-            print seq_id
+            # print seq_id
         #get codons for each seq
         #print "now ready for codons of this sequence..."
         codon_number = 0
