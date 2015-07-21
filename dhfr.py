@@ -85,7 +85,7 @@ def read_inputfile(inputfile, outputfile, *args):
     #************************************************************************************************************
 
     #get seq_id for sequence
-    for i in xrange(0, len(inlines) - 2, 2):
+    for i in xrange(0, len(inlines), 2):
         #sample_list=[]
         seq_id = ""
         #get header line

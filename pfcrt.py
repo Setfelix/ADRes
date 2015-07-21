@@ -15,6 +15,7 @@ import main
 sample_list = []  # list of sample and codon information as class object
 
 
+
 def write2csv(sl, of):
     """write effect of codons, i.e amino acid change, for each sample in tab-delimited file like this:
     Sample, Codon_position(one or more), Amino acid"""
@@ -92,14 +93,14 @@ def read_inputfile(inputfile, outputfile, *args):
     #************************************************************************************************************
 
     #get seq_id for sequence
-    for i in xrange(0, len(inlines) - 2, 2):
+    for i in xrange(0, len(inlines), 2):
         #sample_list=[]
         seq_id = ""
         #get header line
         if seq_id_rx.search(inlines[i]):
             seq_id += inlines[i].rstrip('\n')
             seq_id = seq_id.lstrip('>')
-            #print seq_id
+            print seq_id
         #get codons for each seq
         #print "now ready for codons of this sequence..."
         codon_number = 0
