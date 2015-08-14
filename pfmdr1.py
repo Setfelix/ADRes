@@ -23,7 +23,7 @@ def write2csv(sl, of):
     sl.sort(key=operator.attrgetter('name'))
     # write samples to csv file
     with open(of, 'wb') as out:
-        sampleWriter = csv.writer(out, delimiter='\t', quotechar='"', quoting=csv.QUOTE_ALL)
+        sampleWriter = csv.writer(out, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
         sampleWriter.writerow(["Sample", "Codon_86", "Codon_86_aa", "Codon_184", "Codon_184_aa", "Codon_1034",
                                "Codon_1034_aa", "Codon_1042", "Codon_1042_aa", "Codon_1246", "Codon_1246_aa"])
         for c in sl:
