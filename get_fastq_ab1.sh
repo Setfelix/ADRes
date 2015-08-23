@@ -2,6 +2,13 @@
 # Bash script to automate recursive task of converting ab1 files to fastq, and concatenate them into single fastq
 # file
 
+# Error reporting
+if ! [ "$#" -ge 2 ]; then
+  echo "Usage: $0 <directory_of_ab1_files> <gene> " >&2
+  echo "gene is pfcrt, pfmdr1, dhfr or dhps"
+  exit 1
+fi
+
 #  enable filename patterns which match no files to expand to a null string, rather than themselves
 shopt -s nullglob;
 
