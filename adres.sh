@@ -37,12 +37,12 @@ bwa index $2    # index reference sequence
 bwa bwasw $2 $1$3*$(date +%d_%m_%y)*fastq > $1$3_$(date +%d_%m_%y).sam
 
 # 3. Filter reads by mapping quality
-samtools view -Sq 2 $1$3_$(date +%d_%m_%y).sam > flt_$1$3_$(date +%d_%m_%y).sam
+samtools view -Sq 2 $1$3_$(date +%d_%m_%y).sam > $1$3_flt_$(date +%d_%m_%y).sam
 
 # 4. Convert SAM alignment to fasta using sam2fasta.py
 #    written by Chang Park available here: http://sourceforge.net/projects/sam2fasta/files/
 #    Usage: sam2fasta.py [ref.fasta] [in.sam] [out.fasta]
-sam2fasta.py $2 flt_$1$3_$(date +%d_%m_%y).sam $1$3_$(date +%d_%m_%y).fasta
+sam2fasta.py $2 $1$3_flt_$(date +%d_%m_%y).sam $1$3_$(date +%d_%m_%y).fasta
 
 # 5. Parse FASTA alignment to output SNPs at specific codons and their corresponding amino acid changes
 main.py -i $1$3_$(date +%d_%m_%y).fasta -g $3

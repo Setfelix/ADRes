@@ -8,7 +8,7 @@ import re  # regex requirements
 import csv  # to write csv files
 import operator  # helps to sort items in list
 
-import main
+import adr_codons
 
 
 ofile = ''
@@ -122,9 +122,10 @@ def read_inputfile(inputfile, outputfile, *args):
                     codon_1246 += codon
 
         #pass sample and codon information to sample_class function to create codon object etc.
-        sample_class(seq_id, codon_86, main.amino_acid(codon_86), codon_184, main.amino_acid(codon_184), codon_1034,
-                     main.amino_acid(codon_1034), codon_1042, main.amino_acid(codon_1042), codon_1246,
-                     main.amino_acid(codon_1246))
+        sample_class(seq_id, codon_86, adr_codons.amino_acid(codon_86), codon_184, adr_codons.amino_acid(codon_184),
+                     codon_1034,
+                     adr_codons.amino_acid(codon_1034), codon_1042, adr_codons.amino_acid(codon_1042), codon_1246,
+                     adr_codons.amino_acid(codon_1246))
 
     return outputfile
 

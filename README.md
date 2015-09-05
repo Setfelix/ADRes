@@ -14,7 +14,7 @@ Currently, the following genes and codons are supported:
 Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
 this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.
 
-This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy)) and custom scripts and is made up of the following steps:
+This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy), [SAMtools](http://www.htslib.org/)) and custom scripts and is made up of the following steps:
 
 1. Base calling and quality control, 
 2. Alignment of trimmed and filtered sequences to coding sequence of respective reference gene, 
