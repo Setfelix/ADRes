@@ -15,10 +15,10 @@ if len(sys.argv) <= 1:
     sys.exit()
 else:
     inputfile = sys.argv[1]
+    my_seq = Trace(inputfile)
     if len(sys.argv) == 3:
         q_prob_cutoff = sys.argv[2]
         # begin trimming using modified Richard Mott's algorithm with custom error probability cutoff
-        my_seq = Trace(inputfile)
         my_seq.seq = my_seq.trim(my_seq.seq, q_prob_cutoff)
         my_seq.qual = my_seq.trim(my_seq.qual, q_prob_cutoff)
         my_seq.qual_val = my_seq.trim(my_seq.qual_val, q_prob_cutoff)

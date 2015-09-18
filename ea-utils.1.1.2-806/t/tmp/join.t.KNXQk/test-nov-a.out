@@ -1,0 +1,45 @@
+../fastq-multx: invalid option -- 'p'
+Unknown option `-p'.
+Usage: fastq-multx [-g|-l|-B] <barcodes.fil> <read1.fq> -o r1.%.fq [mate.fq -o r2.%.fq] ...
+Version: 1.02.761
+
+Output files must contain a '%' sign which is replaced with the barcode id in the barcodes file.
+Output file can be n/a to discard the corresponding data (use this for the barcode read)
+
+Barcodes file (-B) looks like this:
+
+<id1> <sequence1>
+<id2> <sequence2> ...
+
+Default is to guess the -bol or -eol based on clear stats.
+
+If -g is used, then it's parameter is an index lane, and frequently occuring sequences are used.
+
+If -l is used then all barcodes in the file are tried, and the *group* with the *most* matches is chosen.
+
+Grouped barcodes file (-l or -L) looks like this:
+
+<id1> <sequence1> <group1>
+<id1> <sequence1> <group1>
+<id2> <sequence2> <group2>...
+
+Mated reads, if supplied, are kept in-sync
+
+Options:
+
+-o FIL1     Output files (one per input, required)
+-g SEQFIL   Determine barcodes from the indexed read SEQFIL
+-l BCFIL    Determine barcodes from any read, using BCFIL as a master list
+-L BCFIL    Determine barcodes from <read1.fq>, using BCFIL as a master list
+-B BCFIL    Use barcodes from BCFIL, no determination step, codes in <read1.fq>
+-H          Use barcodes from illumina's header, instead of a read
+-b          Force beginning of line (5') for barcode matching
+-e          Force end of line (3') for batcode matching
+-t NUM      Divide threshold for auto-determine by factor NUM (1), > 1 = more sensitive
+-G NAME     Use group(s) matching NAME only
+-x          Don't trim barcodes off before writing out destination
+-n          Don't execute, just print likely barcode list
+-v C        Verify that mated id's match up to character C (Use ' ' for illumina)
+-m N        Allow up to N mismatches, as long as they are unique (1)
+-d N        Require a minimum distance of N between the best and next best (2)
+-q N        Require a minimum phred quality of N to accept a barcode base (0)

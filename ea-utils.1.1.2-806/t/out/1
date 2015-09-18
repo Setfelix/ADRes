@@ -1,0 +1,16 @@
+add join tests
+--This line, and those below, will be ignored--
+
+A    join
+A    join/test-ov-b.join
+A    join/test-m.out
+A    join/test-nov-a.out
+A    join/test-nov-b.out
+A    join/test-phred.out
+A    join/test-ov-a.out
+A    join/test-ov-b.out
+A    join/test-m.join
+A    join/test-nov-a.join
+A    join/test-nov-b.join
+A    join/test-ov-a.join
+A    join/test-phred.join

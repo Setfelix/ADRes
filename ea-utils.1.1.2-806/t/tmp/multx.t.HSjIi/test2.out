@@ -1,0 +1,7 @@
+Id	Count	File(s)
+LB2	75	tmp/multx.t.HSjIi/mxout_LB2_1.fq.gz	tmp/multx.t.HSjIi/mxout_LB2_2.fq.gz
+LB4	57	tmp/multx.t.HSjIi/mxout_LB4_1.fq.gz	tmp/multx.t.HSjIi/mxout_LB4_2.fq.gz
+LB5	60	tmp/multx.t.HSjIi/mxout_LB5_1.fq.gz	tmp/multx.t.HSjIi/mxout_LB5_2.fq.gz
+LB6	51	tmp/multx.t.HSjIi/mxout_LB6_1.fq.gz	tmp/multx.t.HSjIi/mxout_LB6_2.fq.gz
+unmatched	7	tmp/multx.t.HSjIi/mxout_unmatched_1.fq.gz	tmp/multx.t.HSjIi/mxout_unmatched_2.fq.gz
+total	250

@@ -1,0 +1,13 @@
+all nice
+--This line, and those below, will be ignored--
+
+A    join.t
+A    in/join
+A    in/join/test-m1.fq
+A    in/join/test-m2.fq
+A    in/join/test-ov-a.1.fq
+A    in/join/test-ov-b.1.fq
+A    in/join/test-ov-a.2.fq
+A    in/join/test-ov-b.2.fq
+AM   in/join/phred.1.fq
+AM   in/join/phred.2.fq
