@@ -26,15 +26,18 @@ if [[ ! -d "$1" || -L "$1" ]]; then
 fi
 
 # 1. Call bases from .ab1 files and output concatenated fastq file of all samples
-if [ "$#" -eq 4 ] && [ "$4" -gt 0 ] && [ "$4" -lt 1 ]; then
-  ./get_fastq_ab1.sh $1 $3 $4 #trim reads with custom quality cutoff (0-1) is provided
+./get_fastq_ab1.sh $1 $3
+
+# 2. Filter bases using PHRED quality score
+if [ "$#" -ge 4 ] && [ "$4" -gt 0 ] && [ "$4" -lt 93 ]; then
+    ./ea-utils.1.1.2-806/fastq-mcf n/a $1$3*_$(date +%d_%m_%y).fastq -o $1$3_q$4_$(date +%d_%m_%y).fastq -q $4
 else
-  ./get_fastq_ab1.sh $1 $3 #trim reads with default quality cutoff (0.05 i.e Q13)
+    ./ea-utils.1.1.2-806/fastq-mcf n/a $1$3*_$(date +%d_%m_%y).fastq -o $1$3_q10_$(date +%d_%m_%y).fastq -q 10
 fi
 
 # 2. Align sample sequences to reference coding sequence of same gene
 ./bwa-0.7.12/bwa index $2    # index reference sequence
-./bwa-0.7.12/bwa bwasw $2 $1$3*$(date +%d_%m_%y)*fastq > $1$3_$(date +%d_%m_%y).sam
+./bwa-0.7.12/bwa bwasw $2 $1$3_q*$(date +%d_%m_%y).fastq > $1$3_$(date +%d_%m_%y).sam
 
 # 3. Filter reads by mapping quality
 ./samtools-1.2/samtools view -Sq 2 $1$3_$(date +%d_%m_%y).sam > $1$3_flt_$(date +%d_%m_%y).sam
