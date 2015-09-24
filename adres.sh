@@ -50,7 +50,7 @@ else
     ./bwa-0.7.12/bwa bwasw $2 $1$3_q*$(date +%d_%m_%y).fastq > $1$3_$(date +%d_%m_%y).sam
 fi
 
-# 3. Filter reads by mapping quality
+# 3. Filter reads by mapping quality (MAPQ)
 if test ! -e $1$3_$(date +%d_%m_%y).sam; then
     echo "Error: missing SAM alignment file."
     exit 1
