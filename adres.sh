@@ -6,14 +6,14 @@
 if ! [ "$#" -ge 3 ]; then
   echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
-  echo "<quality_cutoff> is between 0 and 1. quality_cutoff is optional"
+  echo "<quality_cutoff> is between 10 and 60. quality_cutoff is optional"
   exit 1
 fi
 if ! [ -e "$1" ]; then
   echo "$1 not found" >&2
   echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
-  echo "<quality_cutoff> is between 0 and 1. quality_cutoff is optional"
+  echo "<quality_cutoff> is between 10 and 60. quality_cutoff is optional"
   exit 1
 fi
 if [[ ! -d "$1" || -L "$1" ]]; then
@@ -21,7 +21,7 @@ if [[ ! -d "$1" || -L "$1" ]]; then
   echo "$1 not a directory" >&2
   echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
-  echo "<quality_cutoff> is between 0 and 1. It is optional."
+  echo "<quality_cutoff> is between 10 and 60. It is optional."
   exit 1
 fi
 
@@ -33,9 +33,10 @@ if test ! -e $1$3_$(date +%d_%m_%y); then
     echo "Error: missing fastq file. Ensure that directory contains .ab1 files."
     exit 1
 else
-    if [ "$#" -ge 4 ] && [ "$4" -gt 0 ] && [ "$4" -lt 93 ]; then
+    if [ "$#" -ge 4 ] && [ "$4" -ge 10 ] && [ "$4" -lt 60 ]; then
         ./ea-utils.1.1.2-806/fastq-mcf n/a $1$3*_$(date +%d_%m_%y).fastq -o $1$3_q$4_$(date +%d_%m_%y).fastq -q $4
     else
+        echo "Using default quality_cutoff (Q10)"
         ./ea-utils.1.1.2-806/fastq-mcf n/a $1$3*_$(date +%d_%m_%y).fastq -o $1$3_q10_$(date +%d_%m_%y).fastq -q 10
     fi
 fi
@@ -54,7 +55,7 @@ if test ! -e $1$3_$(date +%d_%m_%y).sam; then
     echo "Error: missing SAM alignment file."
     exit 1
 else
-    ./samtools-1.2/samtools view -Sq 2 $1$3_$(date +%d_%m_%y).sam > $1$3_flt_$(date +%d_%m_%y).sam
+    ./samtools-1.2/samtools view -Sq 10 $1$3_$(date +%d_%m_%y).sam > $1$3_flt_$(date +%d_%m_%y).sam
 fi
 
 # 4. Convert SAM alignment to fasta using sam2fasta.py
