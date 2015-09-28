@@ -29,7 +29,7 @@ fi
 ./get_fastq_ab1.sh $1 $3
 
 # 2. Filter bases using PHRED quality score
-if test ! -e $1$3_$(date +%d_%m_%y); then
+if [ ! -f "$1$3_$(date +%d_%m_%y).fastq" ]; then
     echo "Error: missing fastq file. Ensure that directory contains .ab1 files."
     exit 1
 else
