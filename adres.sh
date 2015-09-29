@@ -4,26 +4,45 @@
 
 # Error reporting
 if ! [ "$#" -ge 3 ]; then
-  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
+  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> [quality_cutoff]" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
-  echo "<quality_cutoff> is between 10 and 60. quality_cutoff is optional"
+  echo "[quality_cutoff] is between 10 and 60. [quality_cutoff] is optional"
   exit 1
 fi
 if ! [ -e "$1" ]; then
   echo "$1 not found" >&2
-  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
+  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> [quality_cutoff]" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
-  echo "<quality_cutoff> is between 10 and 60. quality_cutoff is optional"
+  echo "[quality_cutoff] is between 10 and 60. [quality_cutoff] is optional"
   exit 1
 fi
 if [[ ! -d "$1" || -L "$1" ]]; then
   #If argument is not a directory or is a symbolic link
   echo "$1 not a directory" >&2
-  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>" >&2
+  echo "Usage: $0 <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> [quality_cutoff]" >&2
   echo "gene is pfcrt, pfmdr1, dhfr or dhps"
-  echo "<quality_cutoff> is between 10 and 60. It is optional."
+  echo "[quality_cutoff] is between 10 and 60. It is optional."
   exit 1
 fi
+
+#check whether gene argument is alphabet
+alph='[a-zA-Z]';
+genes=(pfcrt pfmdr1 dhps dhfr)
+if [[ $3 =~ $alph ]]; then
+    gene='echo "print '$3'.lower()" | python'
+    #check whether gene is in genes
+    for x in ${genes}
+    do
+        if [ "$gene" != "$x" ]; then
+            echo "[gene] must be one of pfcrt, pfmdr1, dhfr or dhps"
+            exit 1
+        fi
+    done
+else
+    echo "[gene] must be one of pfcrt, pfmdr1, dhfr or dhps" >&2
+    exit 1
+fi
+
 
 # 1. Call bases from .ab1 files and output concatenated fastq file of all samples
 ./get_fastq_ab1.sh $1 $3
