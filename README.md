@@ -1,6 +1,6 @@
-Detect SNPs in codons of antimalarial drug resistance genes
-===========================================================
-`anti_malaria_snps.sh` is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
+ADRes: a pipeline to detect molecular markers of Antimalarial Drug Resistance genes
+===================================================================================
+`adres.sh` is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 _Plasmodium falciparum_ genes that are associated with antimalarial drug resistance. 
 Currently, the following genes and codons are supported:
 
@@ -14,11 +14,11 @@ Currently, the following genes and codons are supported:
 Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
 this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.
 
-This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy), [SAMtools](http://www.htslib.org/)) and custom scripts and is made up of the following steps:
+This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy), [SAMtools](http://www.htslib.org/)) and custom scripts, and is made up of the following steps:
 
 1. Base calling and quality control, 
-2. Alignment of trimmed and filtered sequences to coding sequence of respective reference gene, 
-3. Conversion of alignment from SAM to FASTA format, 
+2. Alignment of filtered sequences to coding sequence of respective reference gene, 
+3. SAM alignment filtering and conversion to FASTA format, 
 4. Parse FASTA alignment to output codons and corresponding amino acid in CSV format.
 
 -----------------------------------------------------------
@@ -26,33 +26,32 @@ Installation
 -----------------------------------------------------------
 1. First, ensure that the dependencies are installed. Follow the respective links to install: [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy)
 2. Download the source [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
-3. Optionally, add the anti_malaria_snps directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
+3. Optionally, add the ADRes directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
 
 -----------------------------------------------------------
 Usage
 -----------------------------------------------------------
 
-         bash anti_malaria_snps.sh <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> <quality_cutoff>
+         bash adres.sh <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> [quality_cutoff]
 where: 
         
         <directory_of_ab1_files> is directory containing ab1 trace files of a single gene (pfcrt, pfmdr1, dhps, or dhfr)
         <reference_gene_coding_sequence> is path to reference coding sequence of respective gene
         <gene> is pfcrt, pfmdr1, dhps, or dhfr
-        <quality_cutoff> is the error probability for trimming bases. 
-                        Trimming is based on modified Richard Mott's algorithm.
-                        This argument is OPTIONAL. Default value is 0.05.
-                        Legal values range from 0 to 1.
+        [quality_cutoff] is the Phred quality score for trimming bases. 
+                        This argument is OPTIONAL. Default value is 10 (Q10).
+                        Legal values range from 10 to 60.
         
 -------------------------------------------------------------------------------------------------------------
 Example command
 -------------------------------------------------------------------------------------------------------------
-        bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt 0.01
+        bash adres.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt 
 
 ------------------------------------------------------------------------------------------------------------
 Output
 ------------------------------------------------------------------------------------------------------------
-The output file is named in this format: `gene_dd_mm_yy.csv` and is stored in the `<directory_of_ab1_files>`
-The output for the example above could look like this:
+The primary output file is named in this format: `gene_dd_mm_yy.csv` and is stored in the `<directory_of_ab1_files>`
+The output for the example command above could look like this:
 
 | Sample   | Codon_72 | Codon_72_aa | Codon_73 | Codon_73_aa | Codon_74 | Codon_74_aa | Codon_75 | Codon_75_aa | Codon_76 | Codon_76_aa |
 |----------|:--------:|:-----------:|:--------:|:-----------:|:--------:|:-----------:|:--------:|:-----------:|:--------:|:-----------:|
@@ -80,7 +79,7 @@ The `example_data` directory contains:
                                Typically, `<directory_of_ab1_files>` will not contain any intermediate files or 
                                output file until you have ran the pipeline successfully.
                               
-2. `pfcrt_pf3d7_cds.fasta`   : The reference coding sequence for _pfcrt_. 
+2. `pfcrt_pf3d7_cds.fasta`   : The reference coding sequence for _pfcrt_ [PlasmoDB: PF3D7_0709000]. 
                                This file can be used as `<reference_gene_coding_sequence>`. 
                                Reference was originally downloaded from [plasmodb.org](http://plasmodb.org/plasmo/).
    
