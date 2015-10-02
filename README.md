@@ -1,5 +1,5 @@
-ADRes: a pipeline to detect molecular markers of Antimalarial Drug Resistance genes
-===================================================================================
+ADRes: a pipeline to detect molecular markers of Antimalarial Drug Resistance
+=============================================================================
 `adres.sh` is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 _Plasmodium falciparum_ genes that are associated with antimalarial drug resistance. 
 Currently, the following genes and codons are supported:
