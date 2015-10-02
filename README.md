@@ -1,7 +1,7 @@
 ADRes: a pipeline to detect molecular markers of Antimalarial Drug Resistance
 =============================================================================
 `adres.sh` is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
-_Plasmodium falciparum_ genes that are associated with antimalarial drug resistance. 
+_Plasmodium falciparum_ genes that are associated with antimalarial drug resistance, from Sanger sequencing data. 
 Currently, the following genes and codons are supported:
 
 | Gene     | Codons                   |
@@ -24,13 +24,12 @@ This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.s
 -----------------------------------------------------------
 Installation
 -----------------------------------------------------------
-1. First, ensure that the dependencies are installed. Follow the respective links to install: [BWA](http://bio-bwa.sourceforge.net/), [sam2fasta.py](http://sourceforge.net/projects/sam2fasta/files/), [abifpy](https://github.com/bow/abifpy)
-2. Download the source [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
-3. Optionally, add the ADRes directory to your `$PATH` (in `.bashrc`, for example, to make it persistent) 
+1. Download the source [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
+2. Optionally, add the ADRes directory to your `$PATH` (in `.bashrc`, for example, to make it persistent 
 
------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 Usage
------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
          bash adres.sh <directory_of_ab1_files> <reference_gene_coding_sequence> <gene> [quality_cutoff]
 where: 
@@ -38,7 +37,7 @@ where:
         <directory_of_ab1_files> is directory containing ab1 trace files of a single gene (pfcrt, pfmdr1, dhps, or dhfr)
         <reference_gene_coding_sequence> is path to reference coding sequence of respective gene
         <gene> is pfcrt, pfmdr1, dhps, or dhfr
-        [quality_cutoff] is the Phred quality score for trimming bases. 
+        [quality_cutoff] is the Phred quality threshold for trimming bases. 
                         This argument is OPTIONAL. Default value is 10 (Q10).
                         Legal values range from 10 to 60.
         
