@@ -13,26 +13,23 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Anti-malarial SNPs by Setfelix</title>
+    <title>ADRes by Setfelix</title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1>Anti-malarial SNPs</h1>
-        <h2>Pipeline to detect SNPs in specific codons of genes associated with antimalarial drug resistance</h2>
-        <a href="https://github.com/Setfelix/anti_malaria_snps" class="button"><small>View project on</small> GitHub</a>
+        <h1>ADRes</h1>
+        <h2>Pipeline to detect molecular markers of antimalarial drug resistance, using Sanger sequencing data</h2>
+        <a href="https://github.com/Setfelix/ADRes" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
 
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h1>
-<a id="detect-snps-in-codons-of-antimalarial-drug-resistance-genes" class="anchor" href="#detect-snps-in-codons-of-antimalarial-drug-resistance-genes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detect SNPs in codons of antimalarial drug resistance genes</h1>
-
-<p><code>anti_malaria_snps.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
-<em>Plasmodium falciparum</em> genes that are associated with antimalarial drug resistance. 
+          <p><code>adres.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
+<em>Plasmodium falciparum</em> genes that are associated with antimalarial drug resistance, from Sanger sequencing data. 
 Currently, the following genes and codons are supported:</p>
 
 <table>
@@ -62,15 +59,14 @@ Currently, the following genes and codons are supported:</p>
 </tbody>
 </table>
 
-<p>Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
-this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.</p>
+<p>Thus allowing for the detection of molecular markers of resistance to chloroquine, sulphadoxine-pyrimethamine and artemisinin derivatives. Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.</p>
 
-<p>This pipeline is a combination of existing tools (such as <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>) and custom scripts and is made up of the following steps:</p>
+<p>This pipeline is a combination of existing tools (such as <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>, <a href="http://www.htslib.org/">SAMtools</a>) and custom scripts, and is made up of the following steps:</p>
 
 <ol>
 <li>Base calling and quality control, </li>
-<li>Alignment of trimmed and filtered sequences to coding sequence of respective reference gene, </li>
-<li>Conversion of alignment from SAM to FASTA format, </li>
+<li>Alignment of filtered sequences to coding sequence of respective reference gene, </li>
+<li>SAM alignment filtering and conversion to FASTA format, </li>
 <li>Parse FASTA alignment to output codons and corresponding amino acid in CSV format.</li>
 </ol>
 
@@ -80,10 +76,8 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <ol>
-<li>First, ensure that the dependencies are installed. Follow the respective links to install: <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>
-</li>
 <li>Download the source <a href="https://github.com/Setfelix/anti_malaria_snps/zipball/master"><code>.zip</code></a> or <a href="https://github.com/Setfelix/anti_malaria_snps/tarball/master"><code>.tar.gz</code></a> file and extract</li>
-<li>Optionally, add the anti_malaria_snps directory to your <code>$PATH</code> (in <code>.bashrc</code>, for example, to make it persistent) </li>
+<li>Optionally, add the ADRes directory to your <code>$PATH</code> (in <code>.bashrc</code>, for example, to make it persistent </li>
 </ol>
 
 <hr>
@@ -91,7 +85,7 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<pre><code>     bash anti_malaria_snps.sh &lt;directory_of_ab1_files&gt; &lt;reference_gene_coding_sequence&gt; &lt;gene&gt; &lt;quality_cutoff&gt;
+<pre><code>     bash adres.sh &lt;directory_of_ab1_files&gt; &lt;reference_gene_coding_sequence&gt; &lt;gene&gt; [quality_cutoff]
 </code></pre>
 
 <p>where: </p>
@@ -99,10 +93,9 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <pre><code>    &lt;directory_of_ab1_files&gt; is directory containing ab1 trace files of a single gene (pfcrt, pfmdr1, dhps, or dhfr)
     &lt;reference_gene_coding_sequence&gt; is path to reference coding sequence of respective gene
     &lt;gene&gt; is pfcrt, pfmdr1, dhps, or dhfr
-    &lt;quality_cutoff&gt; is the error probability for trimming bases. 
-                    Trimming is based on modified Richard Mott's algorithm.
-                    This argument is OPTIONAL. Default value is 0.05.
-                    Legal values range from 0 to 1.
+    [quality_cutoff] is the Phred quality threshold for trimming bases. 
+                    This argument is OPTIONAL. Default value is 10 (Q10).
+                    Legal values range from 10 to 60.
 </code></pre>
 
 <hr>
@@ -110,7 +103,7 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <h2>
 <a id="example-command" class="anchor" href="#example-command" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example command</h2>
 
-<pre><code>    bash anti_malaria_snps.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt 0.01
+<pre><code>    bash adres.sh ~/pfcrt_ab1_seq/ ~/anti_mdr_snps/pfcrt_pf3D7_cds.fasta pfcrt 
 </code></pre>
 
 <hr>
@@ -118,8 +111,8 @@ this pipeline outputs a CSV-formatted file of sample name, codons and their corr
 <h2>
 <a id="output" class="anchor" href="#output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Output</h2>
 
-<p>The output file is named in this format: <code>gene_dd_mm_yy.csv</code> and is stored in the <code>&lt;directory_of_ab1_files&gt;</code>
-The output for the example above could look like this:</p>
+<p>The primary output file is named in this format: <code>gene_dd_mm_yy.csv</code> and is stored in the <code>&lt;directory_of_ab1_files&gt;</code>
+The output for the example command above could look like this:</p>
 
 <table>
 <thead>
@@ -261,23 +254,23 @@ The <code>example_data</code> directory contains:</p>
                            <code>pfcrt_30_06_15.fastq</code>) and the main output file (<code>pfcrt_30_06_15.csv</code>).
                            Typically, <code>&lt;directory_of_ab1_files&gt;</code> will not contain any intermediate files or 
                            output file until you have ran the pipeline successfully.</p></li>
-<li><p><code>pfcrt_pf3d7_cds.fasta</code>   : The reference coding sequence for <em>pfcrt</em>. 
+<li><p><code>pfcrt_pf3d7_cds.fasta</code>   : The reference coding sequence for <em>pfcrt</em> [PlasmoDB: PF3D7_0709000]. 
                            This file can be used as <code>&lt;reference_gene_coding_sequence&gt;</code>. 
                            Reference was originally downloaded from <a href="http://plasmodb.org/plasmo/">plasmodb.org</a>.</p></li>
 </ol>
         </section>
 
         <aside id="sidebar">
-          <a href="https://github.com/Setfelix/anti_malaria_snps/zipball/master" class="button">
+          <a href="https://github.com/Setfelix/ADRes/zipball/master" class="button">
             <small>Download</small>
             .zip file
           </a>
-          <a href="https://github.com/Setfelix/anti_malaria_snps/tarball/master" class="button">
+          <a href="https://github.com/Setfelix/ADRes/tarball/master" class="button">
             <small>Download</small>
             .tar.gz file
           </a>
 
-          <p class="repo-owner"><a href="https://github.com/Setfelix/anti_malaria_snps"></a> is maintained by <a href="https://github.com/Setfelix">Setfelix</a>.</p>
+          <p class="repo-owner"><a href="https://github.com/Setfelix/ADRes"></a> is maintained by <a href="https://github.com/Setfelix">Setfelix</a>.</p>
 
           <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
         </aside>
