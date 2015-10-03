@@ -11,6 +11,7 @@ Currently, the following genes and codons are supported:
 | _dhps_   | 436, 437, 540, 581, 613  |
 | _dhfr_   | 51, 59, 108, 164         |
 
+Thus allowing for the detection of molecular markers of resistance to chloroquine, sulphadoxine-pyrimethamine, and artemisinin derivatives.
 Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
 this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.
 
