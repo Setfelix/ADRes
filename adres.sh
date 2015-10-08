@@ -29,17 +29,18 @@ fi
 alph='[a-zA-Z]';
 genes=(pfcrt pfmdr1 dhps dhfr)
 if [[ $3 =~ $alph ]]; then
-    gene='echo "print '$3'.lower()" | python'
+    g=$3
+    g="${g,,}" #convert gene name to lowercase (Bash 4.x)
     #check whether gene is in genes
     for x in ${genes}
     do
-        if [ "$gene" != "$x" ]; then
-            echo "[gene] must be one of pfcrt, pfmdr1, dhfr or dhps"
+        if [ "$g" != "$x" ]; then
+            echo "<gene> must be one of pfcrt, pfmdr1, dhfr or dhps"
             exit 1
         fi
     done
 else
-    echo "[gene] must be one of pfcrt, pfmdr1, dhfr or dhps" >&2
+    echo "<gene> must be one of pfcrt, pfmdr1, dhfr or dhps" >&2
     exit 1
 fi
 
