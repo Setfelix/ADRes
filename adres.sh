@@ -32,13 +32,16 @@ if [[ $3 =~ $alph ]]; then
     g=$3
     g="${g,,}" #convert gene name to lowercase (Bash 4.x)
     #check whether gene is in genes
-    for x in ${genes}
-    do
-        if [ "$g" != "$x" ]; then
+    #for x in ${genes}
+    #do
+        #if [ "$g" != "$x" ]; then
+        if [[ " ${genes[@]} " =~ " $g " ]]; then 
+		        echo 'Gene: '$g
+		    else
             echo "<gene> must be one of pfcrt, pfmdr1, dhfr or dhps"
             exit 1
         fi
-    done
+    #done
 else
     echo "<gene> must be one of pfcrt, pfmdr1, dhfr or dhps" >&2
     exit 1
