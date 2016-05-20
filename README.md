@@ -81,6 +81,7 @@ The `example_data` directory contains:
                               
 2. `pfcrt_pf3d7_cds.fasta`   : The reference coding sequence for _pfcrt_ [PlasmoDB: PF3D7_0709000]. 
                                This file can be used as `<reference_gene_coding_sequence>`. 
-                               Reference was originally downloaded from [plasmodb.org](http://plasmodb.org/plasmo/).
+                               Reference was originally downloaded from [plasmodb.org](http://plasmodb.org/plasmo/). Remove any spaces from header of reference fasta file. Modify the header to look like this header for the _pfcrt_ reference: `>pfcrt_pf3d7_CDS_1275bp`
+                                    
    
                               
