@@ -76,7 +76,7 @@ fi
 
 # 3. Filter reads by mapping quality (MAPQ)
 #if test ! -e $1$3_$(date +%d_%m_%y).sam; then
-if [ ! -f $1$3_$(date +%d_%m_%y).sam]; then
+if [ ! -f $1$3_$(date +%d_%m_%y).sam ]; then
     echo "Error: missing SAM alignment file."
     exit 1
 else
@@ -87,7 +87,7 @@ fi
 #    written by Chang Park available here: http://sourceforge.net/projects/sam2fasta/files/
 #    Usage: sam2fasta.py [ref.fasta] [in.sam] [out.fasta]
 #if test ! -e $1$3_flt_$(date +%d_%m_%y).sam; then
-if [ ! -f $1$3_flt_$(date +%d_%m_%y).sam]; then
+if [ ! -f $1$3_flt_$(date +%d_%m_%y).sam ]; then
     echo "Error: missing filtered SAM alignment file."
     exit 1
 else
@@ -96,7 +96,7 @@ fi
 
 # 5. Parse FASTA alignment to output SNPs at specific codons and their corresponding amino acid changes
 #if test ! -e $1$3_$(date +%d_%m_%y).fasta; then
-if [ ! -f $1$3_$(date +%d_%m_%y).fasta]; then
+if [ ! -f $1$3_$(date +%d_%m_%y).fasta ]; then
     echo "Error: missing FASTA alignment file."
     exit 1
 else
