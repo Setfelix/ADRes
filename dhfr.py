@@ -107,13 +107,13 @@ def read_inputfile(inputfile, outputfile, *args):
             for s in xrange(0, len(i_seq) - 3, 3):
                 codon = i_seq[s:s + 3]
                 codon_number += 1
-                if codon_number == 436:
+                if codon_number == 51:
                     codon_51 += codon
-                elif codon_number == 437:
+                elif codon_number == 59:
                     codon_59 += codon
-                elif codon_number == 540:
+                elif codon_number == 108:
                     codon_108 += codon
-                elif codon_number == 613:
+                elif codon_number == 164:
                     codon_164 += codon
 
         #pass sample and codon information to sample_class function to create codon object etc.
