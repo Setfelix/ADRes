@@ -26,7 +26,7 @@ This pipeline is a combination of existing tools (such as [BWA](http://bio-bwa.s
 Installation
 -----------------------------------------------------------
 1. Download the source [`.zip`](https://github.com/Setfelix/anti_malaria_snps/zipball/master) or [`.tar.gz`](https://github.com/Setfelix/anti_malaria_snps/tarball/master) file and extract
-2. Optionally, add the ADRes directory to your `$PATH` (in `.bashrc`, for example, to make it persistent 
+2. Run the pipline from the ADRes directory
 
 ------------------------------------------------------------------------------------------------------------------------
 Usage
