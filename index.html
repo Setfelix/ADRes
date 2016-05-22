@@ -28,7 +28,10 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <p><code>adres.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
+          <h1>
+<a id="adres-a-pipeline-to-detect-molecular-markers-of-antimalarial-drug-resistance" class="anchor" href="#adres-a-pipeline-to-detect-molecular-markers-of-antimalarial-drug-resistance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ADRes: a pipeline to detect molecular markers of Antimalarial Drug Resistance</h1>
+
+<p><code>adres.sh</code> is a BASH-scripted pipeline that can be used to identify SNPs in specific codons of 
 <em>Plasmodium falciparum</em> genes that are associated with antimalarial drug resistance, from Sanger sequencing data. 
 Currently, the following genes and codons are supported:</p>
 
@@ -59,7 +62,9 @@ Currently, the following genes and codons are supported:</p>
 </tbody>
 </table>
 
-<p>Thus allowing for the detection of molecular markers of resistance to chloroquine, sulphadoxine-pyrimethamine and artemisinin derivatives. Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.</p>
+<p>Thus allowing for the detection of molecular markers of resistance to chloroquine, sulphadoxine-pyrimethamine, and artemisinin derivatives.
+Using ABI Sanger sequencing trace files of whole gene (or regions spanning codons of interest) from several samples, 
+this pipeline outputs a CSV-formatted file of sample name, codons and their corresponding amino acids.</p>
 
 <p>This pipeline is a combination of existing tools (such as <a href="http://bio-bwa.sourceforge.net/">BWA</a>, <a href="http://sourceforge.net/projects/sam2fasta/files/">sam2fasta.py</a>, <a href="https://github.com/bow/abifpy">abifpy</a>, <a href="http://www.htslib.org/">SAMtools</a>) and custom scripts, and is made up of the following steps:</p>
 
@@ -77,7 +82,7 @@ Currently, the following genes and codons are supported:</p>
 
 <ol>
 <li>Download the source <a href="https://github.com/Setfelix/anti_malaria_snps/zipball/master"><code>.zip</code></a> or <a href="https://github.com/Setfelix/anti_malaria_snps/tarball/master"><code>.tar.gz</code></a> file and extract</li>
-<li>Optionally, add the ADRes directory to your <code>$PATH</code> (in <code>.bashrc</code>, for example, to make it persistent </li>
+<li>Run the pipline from the ADRes directory</li>
 </ol>
 
 <hr>
@@ -256,7 +261,7 @@ The <code>example_data</code> directory contains:</p>
                            output file until you have ran the pipeline successfully.</p></li>
 <li><p><code>pfcrt_pf3d7_cds.fasta</code>   : The reference coding sequence for <em>pfcrt</em> [PlasmoDB: PF3D7_0709000]. 
                            This file can be used as <code>&lt;reference_gene_coding_sequence&gt;</code>. 
-                           Reference was originally downloaded from <a href="http://plasmodb.org/plasmo/">plasmodb.org</a>.</p></li>
+                           Reference was originally downloaded from <a href="http://plasmodb.org/plasmo/">plasmodb.org</a>. Remove any spaces from header of reference fasta file. Modify the header to look like this header for the <em>pfcrt</em> reference: <code>&gt;pfcrt_pf3d7_CDS_1275bp</code></p></li>
 </ol>
         </section>
 
